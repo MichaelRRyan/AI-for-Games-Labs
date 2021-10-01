@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Player.h"
+
 class Game
 {
 public:
@@ -20,6 +22,8 @@ private:
 	bool m_isRunning;
 
 	sf::RenderWindow m_window;
+
+	Player m_player;
 
 };
 
