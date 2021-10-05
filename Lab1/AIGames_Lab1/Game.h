@@ -4,6 +4,7 @@
 #include "Globals.h"
 
 #include "Player.h"
+#include "NPC.h"
 
 class Game
 {
@@ -25,5 +26,6 @@ private:
 	sf::RenderWindow m_window;
 
 	Player m_player;
+	NPC m_npc;
 
 };

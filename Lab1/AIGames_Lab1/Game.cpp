@@ -48,11 +48,13 @@ void Game::processEvents()
 void Game::update(float t_delta)
 {
 	m_player.update(t_delta);
+	m_npc.update(t_delta);
 }
 
 void Game::render()
 {
 	m_window.clear();
 	m_window.draw(m_player);
+	m_window.draw(m_npc);
 	m_window.display();
 }
