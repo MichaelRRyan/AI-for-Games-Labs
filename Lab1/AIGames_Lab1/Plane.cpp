@@ -1,5 +1,6 @@
 #include "Plane.h"
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t_rotation) :
 	m_acceleration{ t_acceleration },
 	m_rotationSpeed{ t_rotationSpeed },
@@ -18,6 +19,7 @@ Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t
 	setRotation(t_rotation);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setTexture(std::string t_path)
 {
 	if (m_texture.loadFromFile(t_path))
@@ -31,11 +33,13 @@ void Plane::setTexture(std::string t_path)
 	m_sprite.setScale(2.5f, 2.5f);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setPosition(sf::Vector2f t_position)
 {
 	m_sprite.setPosition(t_position);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::update(float t_delta)
 {
 	// Apply the forward movement.
@@ -44,11 +48,13 @@ void Plane::update(float t_delta)
 	handleScreenBoundaries();
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const
 {
 	t_target.draw(m_sprite, t_states);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::handleScreenBoundaries()
 {
 	// Take reference to the rect and position.
@@ -62,6 +68,7 @@ void Plane::handleScreenBoundaries()
 	m_sprite.setPosition(pos.x, pos.y);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setRotation(float t_rotation)
 {
 	m_direction.x = cosf(t_rotation * (3.14f / 180.0f));
@@ -69,11 +76,13 @@ void Plane::setRotation(float t_rotation)
 	m_sprite.setRotation(t_rotation);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setMaxSpeed(float t_maxSpeed)
 {
 	m_maxSpeed = t_maxSpeed;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::accelerate(float t_delta)
 {
 	m_speed += m_acceleration * t_delta;
@@ -82,6 +91,7 @@ void Plane::accelerate(float t_delta)
 	if (m_speed > m_maxSpeed) m_speed = m_maxSpeed;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::decelerate(float t_delta)
 {
 	m_speed -= m_acceleration * t_delta;
@@ -90,12 +100,16 @@ void Plane::decelerate(float t_delta)
 	if (m_speed < 0.0f) m_speed = 0.0f;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateLeft(float t_delta)
 {
 	setRotation(m_sprite.getRotation() - m_speed * m_rotationSpeed * t_delta);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateRight(float t_delta)
 {
 	setRotation(m_sprite.getRotation() + m_speed * m_rotationSpeed * t_delta);
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
