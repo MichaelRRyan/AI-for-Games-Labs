@@ -15,7 +15,7 @@ public:
 
 protected:
 
-	void setTexture(std::string t_path);
+	void setPlaneType(int t_type);
 	void setPosition(sf::Vector2f t_position);
 	void setRotation(float t_rotation);
 	void setMaxSpeed(float t_maxSpeed);

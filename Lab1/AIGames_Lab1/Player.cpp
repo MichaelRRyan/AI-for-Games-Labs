@@ -4,7 +4,7 @@
 Player::Player() :
 	Plane()
 {
-	setTexture("assets/images/player_ship.png");
+	setPlaneType(1);
 	setRotation(20.0f);
 }
 

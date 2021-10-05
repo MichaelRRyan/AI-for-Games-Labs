@@ -7,30 +7,24 @@ Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t
 	m_speed{ t_speed },
 	m_maxSpeed{ 500.0f }
 {
-	if (m_texture.loadFromFile("assets/images/npc_ship.png"))
+	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
 
+	m_sprite.setTextureRect({ 0, 0, 32, 32 });
 	m_sprite.setPosition(250.0f, 250.0f);
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2.0f,
 		m_sprite.getGlobalBounds().height / 2.0f);
 
-	m_sprite.setScale(2.5f, 2.5f);
+	m_sprite.setScale(g_SCALE, g_SCALE);
 
 	setRotation(t_rotation);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-void Plane::setTexture(std::string t_path)
+void Plane::setPlaneType(int t_type)
 {
-	if (m_texture.loadFromFile(t_path))
-		m_sprite.setTexture(m_texture);
-
-	m_sprite.setScale(1.0f, 1.0f);
-
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2.0f,
-		m_sprite.getGlobalBounds().height / 2.0f);
-
-	m_sprite.setScale(2.5f, 2.5f);
+	if (t_type > 0 && t_type < 8) 
+		m_sprite.setTextureRect({ 0, t_type * 32, 32, 32 });
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
