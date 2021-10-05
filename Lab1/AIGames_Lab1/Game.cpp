@@ -1,11 +1,9 @@
 #include "Game.h"
 
-const unsigned Game::s_WINDOW_WIDTH{ 800u };
-const unsigned Game::s_WINDOW_HEIGHT{ 600u };
-
 Game::Game() :
 	m_isRunning{ false },
-	m_window{ sf::VideoMode{ s_WINDOW_WIDTH, s_WINDOW_HEIGHT, 32u }, "Lab 1" }
+	m_window{ sf::VideoMode{ static_cast<unsigned>(g_WINDOW_WIDTH), 
+							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "Lab 1" }
 {
 }
 

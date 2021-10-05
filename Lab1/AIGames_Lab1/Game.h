@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Globals.h"
 
 #include "Player.h"
 
@@ -12,9 +13,6 @@ public:
 	~Game();
 
 	void run();
-
-	static const unsigned s_WINDOW_WIDTH;
-	static const unsigned s_WINDOW_HEIGHT;
 
 private:
 
@@ -29,4 +27,3 @@ private:
 	Player m_player;
 
 };
-
