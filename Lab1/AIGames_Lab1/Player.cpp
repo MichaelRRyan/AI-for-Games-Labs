@@ -17,21 +17,24 @@ Player::Player() :
 
 void Player::update(float t_delta)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	// Handle key pressed.
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) // Move forward.
 		m_speed += m_acceleration * t_delta;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) // Move backwards.
 	{
 		m_speed -= m_acceleration * t_delta;
 		if (m_speed < 0.0f) m_speed = 0; // Restrict movement to forward only.
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // Anti-clockwise rotation.
 		setRotation(m_sprite.getRotation() - m_speed * m_rotationSpeed * t_delta);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) // Clockwise rotation.
 		setRotation(m_sprite.getRotation() + m_speed * m_rotationSpeed * t_delta);
 
+	// Apply the forward movement.
 	m_sprite.setPosition(m_sprite.getPosition() + m_direction * m_speed * t_delta);
+
 	handleScreenBoundaries();
 }
 
@@ -42,8 +45,10 @@ void Player::draw(sf::RenderTarget & t_target, sf::RenderStates t_states) const
 
 void Player::handleScreenBoundaries()
 {
+	// Take reference to the rect and position.
 	sf::FloatRect rect = m_sprite.getGlobalBounds();
 	sf::Vector2f pos = m_sprite.getPosition();
+
 	if (pos.y < -rect.height) pos.y = Game::s_WINDOW_HEIGHT; // Top.
 	if (pos.y > Game::s_WINDOW_HEIGHT) pos.y = -rect.height; // Bottom.
 	if (pos.x < -rect.width) pos.x = Game::s_WINDOW_WIDTH; // Left.
