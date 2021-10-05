@@ -1,8 +1,11 @@
 #include "Game.h"
 
+const unsigned Game::s_WINDOW_WIDTH{ 800u };
+const unsigned Game::s_WINDOW_HEIGHT{ 600u };
+
 Game::Game() :
 	m_isRunning{ false },
-	m_window{ sf::VideoMode{ 800u, 600u, 32u }, "Lab 1" }
+	m_window{ sf::VideoMode{ s_WINDOW_WIDTH, s_WINDOW_HEIGHT, 32u }, "Lab 1" }
 {
 }
 

@@ -13,6 +13,9 @@ public:
 
 	void run();
 
+	static const unsigned s_WINDOW_WIDTH;
+	static const unsigned s_WINDOW_HEIGHT;
+
 private:
 
 	void processEvents();
