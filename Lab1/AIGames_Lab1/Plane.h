@@ -16,7 +16,9 @@ public:
 protected:
 
 	void setTexture(std::string t_path);
+	void setPosition(sf::Vector2f t_position);
 	void setRotation(float t_rotation);
+	void setMaxSpeed(float t_maxSpeed);
 
 	void accelerate(float t_delta);
 	void decelerate(float t_delta);
@@ -36,4 +38,5 @@ private:
 	float m_speed;
 	float m_acceleration;
 	float m_rotationSpeed;
+	float m_maxSpeed;
 };

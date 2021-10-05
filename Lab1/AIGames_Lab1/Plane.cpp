@@ -3,7 +3,8 @@
 Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t_rotation) :
 	m_acceleration{ t_acceleration },
 	m_rotationSpeed{ t_rotationSpeed },
-	m_speed{ t_speed }
+	m_speed{ t_speed },
+	m_maxSpeed{ 500.0f }
 {
 	if (m_texture.loadFromFile("assets/images/npc_ship.png"))
 		m_sprite.setTexture(m_texture);
@@ -28,6 +29,11 @@ void Plane::setTexture(std::string t_path)
 		m_sprite.getGlobalBounds().height / 2.0f);
 
 	m_sprite.setScale(2.5f, 2.5f);
+}
+
+void Plane::setPosition(sf::Vector2f t_position)
+{
+	m_sprite.setPosition(t_position);
 }
 
 void Plane::update(float t_delta)
@@ -63,9 +69,17 @@ void Plane::setRotation(float t_rotation)
 	m_sprite.setRotation(t_rotation);
 }
 
+void Plane::setMaxSpeed(float t_maxSpeed)
+{
+	m_maxSpeed = t_maxSpeed;
+}
+
 void Plane::accelerate(float t_delta)
 {
 	m_speed += m_acceleration * t_delta;
+
+	// Restrict movement to a max speed.
+	if (m_speed > m_maxSpeed) m_speed = m_maxSpeed;
 }
 
 void Plane::decelerate(float t_delta)
