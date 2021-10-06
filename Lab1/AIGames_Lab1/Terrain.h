@@ -26,5 +26,8 @@ private:
 	int m_width;
 	int m_height;
 
+	std::vector<std::vector<int>> m_tiles;
+	std::vector<sf::Vector2i> m_tileRects;
+
 };
 

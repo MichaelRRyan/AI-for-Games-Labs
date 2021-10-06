@@ -5,6 +5,7 @@
 
 #include "Player.h"
 #include "NPC.h"
+#include "Terrain.h"
 
 class Game
 {
@@ -27,5 +28,6 @@ private:
 
 	Player m_player;
 	NPC m_npc;
+	Terrain m_terrain;
 
 };
