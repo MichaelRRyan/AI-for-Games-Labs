@@ -4,7 +4,7 @@
 Game::Game() :
 	m_isRunning{ false },
 	m_window{ sf::VideoMode{ static_cast<unsigned>(g_WINDOW_WIDTH), 
-							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "Lab 1" }
+							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "AI Planes" }
 {
 }
 
