@@ -147,14 +147,17 @@
     <ClCompile Include="src\Plane.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Terrain.cpp" />
+    <ClCompile Include="src\WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Behaviour.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\NPC.h" />
     <ClInclude Include="include\Plane.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Terrain.h" />
+    <ClInclude Include="include\WanderBehaviour.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,10 +8,17 @@ class Plane : public sf::Drawable
 {
 public:
 
-	Plane(float t_acceleration = 50.0f, float t_rotationSpeed = 0.2f, 
+	Plane(float t_acceleration = 50.0f, float t_rotationSpeed = 0.2f,
 		  float t_speed = 0.0f, float t_rotation = 0.0f);
 
+	virtual ~Plane() { }
+
 	virtual void update(float t_delta);
+
+	void accelerate(float t_delta);
+	void decelerate(float t_delta);
+	void rotateLeft(float t_delta);
+	void rotateRight(float t_delta);
 
 protected:
 
@@ -19,11 +26,6 @@ protected:
 	void setPosition(sf::Vector2f t_position);
 	void setRotation(float t_rotation);
 	void setMaxSpeed(float t_maxSpeed);
-
-	void accelerate(float t_delta);
-	void decelerate(float t_delta);
-	void rotateLeft(float t_delta);
-	void rotateRight(float t_delta);
 
 private:
 
