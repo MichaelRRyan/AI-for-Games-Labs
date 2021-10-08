@@ -6,9 +6,13 @@ Game::Game() :
 	m_window{ sf::VideoMode{ static_cast<unsigned>(g_WINDOW_WIDTH), 
 							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "AI Planes" }
 {
-	m_planes.push_back(new Player());
-	m_planes.push_back(new NPC(new WanderBehaviour()));
-	m_planes.push_back(new NPC(new SeekBehaviour()));
+	m_planes.push_back(new Plane(new UserInputBehaviour()));
+	m_planes.push_back(new Plane(new WanderBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
+	m_planes.push_back(new Plane(new SeekBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
+
+	m_planes.at(0)->setPlaneType(1);
+	m_planes.at(1)->setPlaneType(2);
+	m_planes.at(2)->setPlaneType(3);
 
 	m_planes.at(1)->setTarget(m_planes.at(0));
 	m_planes.at(2)->setTarget(m_planes.at(0));

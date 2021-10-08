@@ -4,14 +4,17 @@
 #include <string>
 #include "Globals.h"
 
+class Behaviour;
+
 class Plane : public sf::Drawable
 {
 public:
 
-	Plane(float t_acceleration = 50.0f, float t_rotationSpeed = 0.2f,
+	Plane(Behaviour * t_behaviour,
+		  float t_acceleration = 50.0f, float t_rotationSpeed = 0.2f,
 		  float t_speed = 0.0f, float t_rotation = 0.0f);
 
-	virtual ~Plane() { }
+	virtual ~Plane();
 
 	virtual void update(float t_delta);
 
@@ -26,9 +29,10 @@ public:
 	void setTarget(Plane* t_target);
 	Plane * getTarget() const;
 
+	void setPlaneType(int t_type);
+
 protected:
 
-	void setPlaneType(int t_type);
 	void setPosition(sf::Vector2f t_position);
 	void setRotation(float t_rotation);
 	void setMaxSpeed(float t_maxSpeed);
@@ -39,6 +43,9 @@ private:
 
 	void handleScreenBoundaries();
 
+	Behaviour * m_behaviour;
+	Plane* m_target;
+
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
@@ -48,5 +55,6 @@ private:
 	float m_rotationSpeed;
 	float m_maxSpeed;
 
-	Plane * m_target;
 };
+
+#include "Behaviour.h"

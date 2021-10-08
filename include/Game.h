@@ -3,9 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "Globals.h"
 
-#include "Player.h"
-#include "NPC.h"
 #include "Terrain.h"
+
+#include "UserInputBehaviour.h"
 #include "SeekBehaviour.h"
 #include "WanderBehaviour.h"
 

@@ -1,12 +1,15 @@
 #include "Plane.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t_rotation) :
+Plane::Plane(Behaviour* t_behaviour, 
+		     float t_acceleration, float t_rotationSpeed, 
+		     float t_speed, float t_rotation) :
 	m_acceleration{ t_acceleration },
 	m_rotationSpeed{ t_rotationSpeed },
 	m_speed{ t_speed },
 	m_maxSpeed{ 500.0f },
-	m_target{ nullptr }
+	m_target{ nullptr },
+	m_behaviour{ t_behaviour }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
@@ -19,6 +22,12 @@ Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t
 	m_sprite.setScale(g_SCALE, g_SCALE);
 
 	setRotation(t_rotation);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+Plane::~Plane()
+{
+	if (m_behaviour) delete m_behaviour;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +46,8 @@ void Plane::setPosition(sf::Vector2f t_position)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::update(float t_delta)
 {
+	if (m_behaviour) m_behaviour->update(this, t_delta);
+
 	// Apply the forward movement.
 	m_sprite.setPosition(m_sprite.getPosition() + m_direction * m_speed * t_delta);
 
