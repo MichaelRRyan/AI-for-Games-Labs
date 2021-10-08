@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Behaviours">
+      <UniqueIdentifier>{8e6ce249-7222-49fa-9497-e317a8e3cd29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Behaviours">
+      <UniqueIdentifier>{f07c2ca7-90c4-40a8-97f6-919c4a89e56b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">
@@ -27,17 +33,20 @@
     <ClCompile Include="src\Plane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WanderBehaviour.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\ArriveBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="src\SeekBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="src\UserInputBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
-    <ClCompile Include="src\ArriveBehaviour.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\WanderBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FleeBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,20 +62,23 @@
     <ClInclude Include="include\Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\WanderBehaviour.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\ArriveBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="include\Behaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="include\SeekBehaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="include\UserInputBehaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
-    <ClInclude Include="include\ArriveBehaviour.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\WanderBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FleeBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

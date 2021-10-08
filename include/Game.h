@@ -9,6 +9,7 @@
 #include "SeekBehaviour.h"
 #include "WanderBehaviour.h"
 #include "ArriveBehaviour.h"
+#include "FleeBehaviour.h"
 
 class Game
 {
