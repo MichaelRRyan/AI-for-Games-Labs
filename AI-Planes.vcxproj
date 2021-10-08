@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ArriveBehaviour.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Plane.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="src\WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ArriveBehaviour.h" />
     <ClInclude Include="include\Behaviour.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />

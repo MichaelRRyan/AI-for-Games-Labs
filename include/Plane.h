@@ -25,6 +25,8 @@ public:
 
 	sf::Vector2f const & getPosition() const;
 	sf::Vector2f const & getDirection() const;
+	float const getAcceleration() const;
+	float const getSpeed() const;
 
 	void setTarget(Plane* t_target);
 	Plane * getTarget() const;

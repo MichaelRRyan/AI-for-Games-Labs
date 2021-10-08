@@ -8,14 +8,17 @@ Game::Game() :
 {
 	m_planes.push_back(new Plane(new UserInputBehaviour()));
 	m_planes.push_back(new Plane(new WanderBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
+	m_planes.push_back(new Plane(new ArriveBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
 	m_planes.push_back(new Plane(new SeekBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
 
 	m_planes.at(0)->setPlaneType(1);
 	m_planes.at(1)->setPlaneType(2);
 	m_planes.at(2)->setPlaneType(3);
+	m_planes.at(3)->setPlaneType(4);
 
 	m_planes.at(1)->setTarget(m_planes.at(0));
 	m_planes.at(2)->setTarget(m_planes.at(0));
+	m_planes.at(3)->setTarget(m_planes.at(0));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -67,10 +67,11 @@ void Plane::handleScreenBoundaries()
 	sf::FloatRect rect = m_sprite.getGlobalBounds();
 	sf::Vector2f pos = m_sprite.getPosition();
 
-	if (pos.y < -rect.height) pos.y = static_cast<float>(g_WINDOW_HEIGHT); // Top.
+	if (pos.y < -rect.height) pos.y = g_WINDOW_HEIGHT; // Top.
 	if (pos.y > g_WINDOW_HEIGHT) pos.y = -rect.height; // Bottom.
-	if (pos.x < -rect.width) pos.x = static_cast<float>(g_WINDOW_WIDTH); // Left.
+	if (pos.x < -rect.width) pos.x = g_WINDOW_WIDTH; // Left.
 	if (pos.x > g_WINDOW_WIDTH) pos.x = -rect.width; // Right.
+
 	m_sprite.setPosition(pos.x, pos.y);
 }
 
@@ -119,15 +120,27 @@ void Plane::rotateRight(float t_delta)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-sf::Vector2f const& Plane::getPosition() const
+sf::Vector2f const & Plane::getPosition() const
 {
 	return m_sprite.getPosition();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-sf::Vector2f const& Plane::getDirection() const
+sf::Vector2f const & Plane::getDirection() const
 {
 	return m_direction;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const Plane::getAcceleration() const
+{
+	return m_acceleration;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const Plane::getSpeed() const
+{
+	return m_speed;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

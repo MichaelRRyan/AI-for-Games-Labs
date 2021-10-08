@@ -8,6 +8,7 @@
 #include "UserInputBehaviour.h"
 #include "SeekBehaviour.h"
 #include "WanderBehaviour.h"
+#include "ArriveBehaviour.h"
 
 class Game
 {
@@ -28,7 +29,7 @@ private:
 
 	sf::RenderWindow m_window;
 
-	std::vector<Plane *> m_planes;
 	Terrain m_terrain;
+	std::vector<Plane*> m_planes;
 
 };
