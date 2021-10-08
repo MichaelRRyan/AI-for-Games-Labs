@@ -146,6 +146,7 @@
     <ClCompile Include="src\NPC.cpp" />
     <ClCompile Include="src\Plane.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\SeekBehaviour.cpp" />
     <ClCompile Include="src\Terrain.cpp" />
     <ClCompile Include="src\WanderBehaviour.cpp" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="include\NPC.h" />
     <ClInclude Include="include\Plane.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\SeekBehaviour.h" />
     <ClInclude Include="include\Terrain.h" />
     <ClInclude Include="include\WanderBehaviour.h" />
   </ItemGroup>

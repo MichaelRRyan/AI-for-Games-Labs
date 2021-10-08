@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "NPC.h"
 #include "Terrain.h"
+#include "SeekBehaviour.h"
+#include "WanderBehaviour.h"
 
 class Game
 {
@@ -26,8 +28,7 @@ private:
 
 	sf::RenderWindow m_window;
 
-	Player m_player;
-	NPC m_npc;
+	std::vector<Plane *> m_planes;
 	Terrain m_terrain;
 
 };

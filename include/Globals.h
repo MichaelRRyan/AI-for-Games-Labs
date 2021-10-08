@@ -1,6 +1,49 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 const float g_WINDOW_WIDTH{ 1600.0f };
 const float g_WINDOW_HEIGHT{ 1200.0f };
 
 const float g_SCALE{ 5.0f };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+static float const angleBetween(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
+static float const dotProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
+static float const crossProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
+static float const magnitude(sf::Vector2f const& t_a);
+static float const toDegrees(float const t_angleRads);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const angleBetween(sf::Vector2f const & t_a, sf::Vector2f const & t_b)
+{
+	return acosf(dotProduct(t_a, t_b) / (magnitude(t_a) * magnitude(t_b)));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const dotProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b)
+{
+	return t_a.x * t_b.x + t_a.y * t_b.y;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const crossProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b)
+{
+	return (t_a.x * t_b.y) - (t_a.y * t_b.x);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const magnitude(sf::Vector2f const& t_a)
+{
+	return sqrtf(t_a.x * t_a.x + t_a.y * t_a.y);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const toDegrees(float const t_angleRads)
+{
+	return t_angleRads * (180.0f / 3.14f);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,8 @@ Plane::Plane(float t_acceleration, float t_rotationSpeed, float t_speed, float t
 	m_acceleration{ t_acceleration },
 	m_rotationSpeed{ t_rotationSpeed },
 	m_speed{ t_speed },
-	m_maxSpeed{ 500.0f }
+	m_maxSpeed{ 500.0f },
+	m_target{ nullptr }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
@@ -104,6 +105,30 @@ void Plane::rotateLeft(float t_delta)
 void Plane::rotateRight(float t_delta)
 {
 	setRotation(m_sprite.getRotation() + m_speed * m_rotationSpeed * t_delta);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+sf::Vector2f const& Plane::getPosition() const
+{
+	return m_sprite.getPosition();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+sf::Vector2f const& Plane::getDirection() const
+{
+	return m_direction;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void Plane::setTarget(Plane* t_target)
+{
+	m_target = t_target;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+Plane* Plane::getTarget() const
+{
+	return m_target;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

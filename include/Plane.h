@@ -20,6 +20,12 @@ public:
 	void rotateLeft(float t_delta);
 	void rotateRight(float t_delta);
 
+	sf::Vector2f const & getPosition() const;
+	sf::Vector2f const & getDirection() const;
+
+	void setTarget(Plane* t_target);
+	Plane * getTarget() const;
+
 protected:
 
 	void setPlaneType(int t_type);
@@ -41,4 +47,6 @@ private:
 	float m_acceleration;
 	float m_rotationSpeed;
 	float m_maxSpeed;
+
+	Plane * m_target;
 };

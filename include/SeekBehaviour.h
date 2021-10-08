@@ -2,10 +2,10 @@
 
 #include "Behaviour.h"
 
-class WanderBehaviour : public Behaviour
+class SeekBehaviour : public Behaviour
 {
 public:
-	WanderBehaviour() = default;
+	SeekBehaviour() = default;
 	void update(Plane * t_self, float t_delta) override;
 };
 

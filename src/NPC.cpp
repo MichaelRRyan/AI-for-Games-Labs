@@ -1,11 +1,11 @@
 #include "NPC.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-NPC::NPC() :
+NPC::NPC(Behaviour * t_behaviour) :
 	Plane(50.0f, 0.5f, 250.0f, 45.0f)
 {
 	setPlaneType(2);
-	m_behaviour = new WanderBehaviour();
+	m_behaviour = t_behaviour;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,10 +17,7 @@ NPC::~NPC()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void NPC::update(float t_delta)
 {
-	SteeringInput input;
-	input.me = this;
-	m_behaviour->getSteering(input, t_delta);
-
+	m_behaviour->update(this, t_delta);
 	Plane::update(t_delta);
 }
 

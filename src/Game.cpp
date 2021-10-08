@@ -6,6 +6,12 @@ Game::Game() :
 	m_window{ sf::VideoMode{ static_cast<unsigned>(g_WINDOW_WIDTH), 
 							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "AI Planes" }
 {
+	m_planes.push_back(new Player());
+	m_planes.push_back(new NPC(new WanderBehaviour()));
+	m_planes.push_back(new NPC(new SeekBehaviour()));
+
+	m_planes.at(1)->setTarget(m_planes.at(0));
+	m_planes.at(2)->setTarget(m_planes.at(0));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,8 +58,8 @@ void Game::processEvents()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Game::update(float t_delta)
 {
-	m_player.update(t_delta);
-	m_npc.update(t_delta);
+	for (Plane * plane : m_planes)
+		plane->update(t_delta);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,8 +67,10 @@ void Game::render()
 {
 	m_window.clear();
 	m_window.draw(m_terrain);
-	m_window.draw(m_player);
-	m_window.draw(m_npc);
+
+	for (Plane* plane : m_planes)
+		m_window.draw(*plane);
+
 	m_window.display();
 }
 

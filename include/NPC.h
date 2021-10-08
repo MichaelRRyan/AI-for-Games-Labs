@@ -3,13 +3,13 @@
 #include <SFML/Graphics.hpp>
 #include "Plane.h"
 #include "Behaviour.h"
-#include "WanderBehaviour.h"
+#include "SeekBehaviour.h"
 
 class NPC : public Plane
 {
 public:
 
-	NPC();
+	NPC(Behaviour * t_behaviour = new SeekBehaviour());
 	~NPC();
 	void update(float t_delta);
 
