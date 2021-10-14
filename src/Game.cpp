@@ -7,10 +7,10 @@ Game::Game() :
 							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "AI Planes" }
 {
 	m_planes.push_back(new Plane(new UserInputBehaviour()));
-	m_planes.push_back(new Plane(new WanderBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
-	m_planes.push_back(new Plane(new ArriveBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
-	m_planes.push_back(new Plane(new SeekBehaviour(), 50.0f, 0.5f, 250.0f, 45.0f));
-	m_planes.push_back(new Plane(new FleeBehaviour(), 50.0f, 0.5f, 100.0f, 45.0f));
+	m_planes.push_back(new Plane(new WanderBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new ArriveBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new SeekBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new FleeBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
 
 	m_planes.at(0)->setPlaneType(1);
 	m_planes.at(1)->setPlaneType(2);

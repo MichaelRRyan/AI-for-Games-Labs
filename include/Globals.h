@@ -2,10 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 
-const float g_WINDOW_WIDTH{ 1600.0f };
-const float g_WINDOW_HEIGHT{ 1200.0f };
+const float g_WINDOW_WIDTH{ 800.0f };
+const float g_WINDOW_HEIGHT{ 600.0f };
 
-const float g_SCALE{ 5.0f };
+const float g_SCALE{ 2.5f };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 static sf::Vector2f vectorRotateBy(sf::Vector2f const& t_vector, float t_angleRadians);

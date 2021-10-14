@@ -12,7 +12,7 @@ class Plane : public sf::Drawable
 public:
 
 	Plane(Behaviour * t_behaviour,
-		  float t_acceleration = 50.0f, float t_rotationSpeed = 0.2f,
+		  float t_acceleration = 25.0f, float t_rotationSpeed = 0.2f,
 		  float t_speed = 0.0f, float t_rotation = 0.0f);
 
 	virtual ~Plane();

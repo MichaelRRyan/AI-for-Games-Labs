@@ -11,7 +11,7 @@ class VisionCone : public sf::Drawable
 {
 public:
 
-	VisionCone(float t_rangeRads = toRadians(90.0f), float t_radius = 256.0f, int t_segments = 20);
+	VisionCone(float t_rangeRads = toRadians(90.0f), float t_radius = 128.0f, int t_segments = 20);
 	bool update(Plane const & t_self);
 	
 	void setRange(float t_rangeRads);
