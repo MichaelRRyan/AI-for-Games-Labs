@@ -8,13 +8,30 @@ const float g_WINDOW_HEIGHT{ 1200.0f };
 const float g_SCALE{ 5.0f };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+static sf::Vector2f vectorRotateBy(sf::Vector2f const& t_vector, float t_angleRadians);
+static sf::Vector2f normalise(sf::Vector2f const& t_vector);
 static float const angleBetween(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const dotProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const crossProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const magnitude(sf::Vector2f const& t_a);
 static float const toDegrees(float const t_angleRads);
+static float const toRadians(float const t_angleDegs);
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+sf::Vector2f vectorRotateBy(sf::Vector2f const & t_vector, float t_angleRadians)
+{
+	return sf::Vector2f(
+		t_vector.x * cosf(t_angleRadians) - t_vector.y * sinf(t_angleRadians),
+		t_vector.x * sinf(t_angleRadians) + t_vector.y * cosf(t_angleRadians));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+sf::Vector2f normalise(sf::Vector2f const& t_vector)
+{
+	return t_vector / magnitude(t_vector);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 float const angleBetween(sf::Vector2f const & t_a, sf::Vector2f const & t_b)
@@ -44,6 +61,12 @@ float const magnitude(sf::Vector2f const& t_a)
 float const toDegrees(float const t_angleRads)
 {
 	return t_angleRads * (180.0f / 3.14f);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const toRadians(float const t_angleDegs)
+{
+	return t_angleDegs * (3.14f / 180.0f);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

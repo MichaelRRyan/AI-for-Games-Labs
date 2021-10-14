@@ -4,9 +4,9 @@
 Plane::Plane(Behaviour* t_behaviour, 
 		     float t_acceleration, float t_rotationSpeed, 
 		     float t_speed, float t_rotation) :
+	m_velocity{ t_speed, 0.0f },
 	m_acceleration{ t_acceleration },
 	m_rotationSpeed{ t_rotationSpeed },
-	m_speed{ t_speed },
 	m_maxSpeed{ 500.0f },
 	m_target{ nullptr },
 	m_behaviour{ t_behaviour }
@@ -49,7 +49,7 @@ void Plane::update(float t_delta)
 	if (m_behaviour) m_behaviour->update(this, t_delta);
 
 	// Apply the forward movement.
-	m_sprite.setPosition(m_sprite.getPosition() + m_direction * m_speed * t_delta);
+	m_sprite.move(m_velocity * t_delta);
 
 	handleScreenBoundaries();
 }
@@ -78,8 +78,10 @@ void Plane::handleScreenBoundaries()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setRotation(float t_rotation)
 {
-	m_direction.x = cosf(t_rotation * (3.14f / 180.0f));
-	m_direction.y = sinf(t_rotation * (3.14f / 180.0f));
+	float speed = getSpeed();
+	m_velocity.x = cosf(toRadians(t_rotation));
+	m_velocity.y = sinf(toRadians(t_rotation));
+	m_velocity *= speed;
 	m_sprite.setRotation(t_rotation);
 }
 
@@ -92,31 +94,34 @@ void Plane::setMaxSpeed(float t_maxSpeed)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::accelerate(float t_delta)
 {
-	m_speed += m_acceleration * t_delta;
+	m_velocity += getDirection() * m_acceleration * t_delta;
 
 	// Restrict movement to a max speed.
-	if (m_speed > m_maxSpeed) m_speed = m_maxSpeed;
+	if (getSpeed() > m_maxSpeed)
+		m_velocity = getDirection() * m_maxSpeed;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::decelerate(float t_delta)
 {
-	m_speed -= m_acceleration * t_delta;
+	float decel = m_acceleration * t_delta;
 
-	// Restrict movement to forward only.
-	if (m_speed < 0.0f) m_speed = 0.0f;
+	if (getSpeed() >= decel)
+		m_velocity -= getDirection() * decel;
+	else
+		m_velocity = { 0.0f, 0.0f };	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateLeft(float t_delta)
 {
-	setRotation(m_sprite.getRotation() - m_speed * m_rotationSpeed * t_delta);
+	setRotation(m_sprite.getRotation() - getSpeed() * m_rotationSpeed * t_delta);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateRight(float t_delta)
 {
-	setRotation(m_sprite.getRotation() + m_speed * m_rotationSpeed * t_delta);
+	setRotation(m_sprite.getRotation() + getSpeed() * m_rotationSpeed * t_delta);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,9 +131,17 @@ sf::Vector2f const & Plane::getPosition() const
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-sf::Vector2f const & Plane::getDirection() const
+sf::Vector2f const Plane::getDirection() const
 {
-	return m_direction;
+	if (getSpeed() != 0)
+		return normalise(m_velocity);
+	else
+	{
+		return sf::Vector2f{
+			cosf(toRadians(m_sprite.getRotation())),
+			sinf(toRadians(m_sprite.getRotation()))
+		};
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,7 +153,7 @@ float const Plane::getAcceleration() const
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 float const Plane::getSpeed() const
 {
-	return m_speed;
+	return magnitude(m_velocity);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

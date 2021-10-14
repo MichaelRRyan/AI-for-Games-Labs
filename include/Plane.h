@@ -24,7 +24,7 @@ public:
 	void rotateRight(float t_delta);
 
 	sf::Vector2f const & getPosition() const;
-	sf::Vector2f const & getDirection() const;
+	sf::Vector2f const getDirection() const;
 	float const getAcceleration() const;
 	float const getSpeed() const;
 
@@ -51,8 +51,8 @@ private:
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
-	sf::Vector2f m_direction;
-	float m_speed;
+	sf::Vector2f m_velocity;
+
 	float m_acceleration;
 	float m_rotationSpeed;
 	float m_maxSpeed;
