@@ -9,7 +9,8 @@ Plane::Plane(Behaviour* t_behaviour,
 	m_rotationSpeed{ t_rotationSpeed },
 	m_maxSpeed{ 500.0f },
 	m_target{ nullptr },
-	m_behaviour{ t_behaviour }
+	m_behaviour{ t_behaviour },
+	m_active{ true }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
@@ -38,6 +39,18 @@ void Plane::setPlaneType(int t_type)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void Plane::setActive(bool t_active)
+{
+	m_active = t_active;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+bool Plane::getActive() const
+{
+	return m_active;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::setPosition(sf::Vector2f t_position)
 {
 	m_sprite.setPosition(t_position);
@@ -46,18 +59,24 @@ void Plane::setPosition(sf::Vector2f t_position)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::update(float t_delta)
 {
-	if (m_behaviour) m_behaviour->update(this, t_delta);
+	if (m_active)
+	{
+		if (m_behaviour) m_behaviour->update(this, t_delta);
 
-	updatePosition(t_delta);
+		updatePosition(t_delta);
 
-	m_visionCone.update(*this);
+		m_visionCone.update(*this);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const
 {
-	t_target.draw(m_visionCone, t_states);
-	t_target.draw(m_sprite, t_states);
+	if (m_active)
+	{
+		t_target.draw(m_visionCone, t_states);
+		t_target.draw(m_sprite, t_states);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

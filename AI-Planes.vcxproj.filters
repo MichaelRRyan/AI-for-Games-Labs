@@ -51,6 +51,9 @@
     <ClCompile Include="src\VisionCone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\TrackerLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="include\VisionCone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TrackerLabel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

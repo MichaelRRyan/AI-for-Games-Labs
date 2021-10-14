@@ -16,8 +16,8 @@ VisionCone::VisionCone(float t_rangeRads, float t_radius, int t_segments) :
 bool VisionCone::update(Plane const& t_self)
 {
 	generateCone(t_self.getPosition(), toRadians(t_self.getRotation()));
-	return (t_self.getTarget() == nullptr) ? false : 
-		checkForTarget(*t_self.getTarget());
+
+	return (t_self.getTarget()) ? checkForTarget(*t_self.getTarget()) : false;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

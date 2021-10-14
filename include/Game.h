@@ -4,6 +4,7 @@
 #include "Globals.h"
 
 #include "Terrain.h"
+#include "TrackerLabel.h"
 
 #include "UserInputBehaviour.h"
 #include "SeekBehaviour.h"
@@ -31,6 +32,7 @@ private:
 	sf::RenderWindow m_window;
 
 	Terrain m_terrain;
-	std::vector<Plane*> m_planes;
+	std::vector<Plane *> m_planes;
+	std::vector<TrackerLabel> m_trackerLabels;
 
 };

@@ -37,6 +37,9 @@ public:
 
 	void setPlaneType(int t_type);
 
+	void setActive(bool t_active);
+	bool getActive() const;
+
 protected:
 
 	void setPosition(sf::Vector2f t_position);
@@ -62,6 +65,8 @@ private:
 	float m_acceleration;
 	float m_rotationSpeed;
 	float m_maxSpeed;
+
+	bool m_active;
 
 };
 

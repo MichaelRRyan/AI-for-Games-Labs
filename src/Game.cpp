@@ -22,6 +22,11 @@ Game::Game() :
 	m_planes.at(2)->setTarget(m_planes.at(0));
 	m_planes.at(3)->setTarget(m_planes.at(0));
 	m_planes.at(4)->setTarget(m_planes.at(0));
+
+	m_trackerLabels.emplace_back("1. Wander", m_planes.at(1));
+	m_trackerLabels.emplace_back("2. Arrive", m_planes.at(2));
+	m_trackerLabels.emplace_back("3. Seek", m_planes.at(3));
+	m_trackerLabels.emplace_back("4. Flee", m_planes.at(4));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +75,9 @@ void Game::update(float t_delta)
 {
 	for (Plane * plane : m_planes)
 		plane->update(t_delta);
+
+	for (TrackerLabel & label : m_trackerLabels)
+		label.update();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,8 +86,11 @@ void Game::render()
 	m_window.clear();
 	m_window.draw(m_terrain);
 
-	for (Plane* plane : m_planes)
+	for (Plane * plane : m_planes)
 		m_window.draw(*plane);
+
+	for (TrackerLabel const & label : m_trackerLabels)
+		m_window.draw(label);
 
 	m_window.display();
 }
