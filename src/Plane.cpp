@@ -48,12 +48,9 @@ void Plane::update(float t_delta)
 {
 	if (m_behaviour) m_behaviour->update(this, t_delta);
 
-	// Apply the forward movement.
-	m_sprite.move(m_velocity * t_delta);
+	updatePosition(t_delta);
 
 	m_visionCone.update(*this);
-
-	handleScreenBoundaries();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +58,15 @@ void Plane::draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const
 {
 	t_target.draw(m_visionCone, t_states);
 	t_target.draw(m_sprite, t_states);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void Plane::updatePosition(float t_delta)
+{
+	// Apply the forward movement.
+	m_sprite.move(m_velocity * t_delta);
+
+	handleScreenBoundaries();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
