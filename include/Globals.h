@@ -11,6 +11,7 @@ const float g_SCALE{ 5.0f };
 static sf::Vector2f vectorRotateBy(sf::Vector2f const& t_vector, float t_angleRadians);
 static sf::Vector2f normalise(sf::Vector2f const& t_vector);
 static float const angleBetween(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
+static float const signedAngleBetween(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const dotProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const crossProduct(sf::Vector2f const& t_a, sf::Vector2f const& t_b);
 static float const magnitude(sf::Vector2f const& t_a);
@@ -37,6 +38,12 @@ sf::Vector2f normalise(sf::Vector2f const& t_vector)
 float const angleBetween(sf::Vector2f const & t_a, sf::Vector2f const & t_b)
 {
 	return acosf(dotProduct(t_a, t_b) / (magnitude(t_a) * magnitude(t_b)));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const signedAngleBetween(sf::Vector2f const& t_a, sf::Vector2f const& t_b)
+{
+	return atan2f(t_a.x * t_b.y - t_a.y * t_b.x, t_a.x * t_b.x + t_a.y * t_b.y);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

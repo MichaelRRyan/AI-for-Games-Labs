@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Globals.h"
+#include "VisionCone.h"
 
 class Behaviour;
 
@@ -25,6 +26,7 @@ public:
 
 	sf::Vector2f const & getPosition() const;
 	sf::Vector2f const getDirection() const;
+	float const getRotation() const;
 	float const getAcceleration() const;
 	float const getSpeed() const;
 
@@ -47,6 +49,7 @@ private:
 
 	Behaviour * m_behaviour;
 	Plane* m_target;
+	VisionCone m_visionCone;
 
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
