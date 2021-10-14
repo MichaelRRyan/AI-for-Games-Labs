@@ -24,8 +24,10 @@ public:
 	void rotateLeft(float t_delta);
 	void rotateRight(float t_delta);
 
+	// GETTERS & SETTERS
 	sf::Vector2f const & getPosition() const;
 	sf::Vector2f const getDirection() const;
+
 	float const getRotation() const;
 	float const getAcceleration() const;
 	float const getSpeed() const;
