@@ -54,6 +54,9 @@
     <ClCompile Include="src\TrackerLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\PursueBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="include\TrackerLabel.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PursueBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

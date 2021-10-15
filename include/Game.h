@@ -11,6 +11,7 @@
 #include "WanderBehaviour.h"
 #include "ArriveBehaviour.h"
 #include "FleeBehaviour.h"
+#include "PursueBehaviour.h"
 
 class Game
 {

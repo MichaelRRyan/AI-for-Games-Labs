@@ -26,6 +26,7 @@ public:
 
 	// GETTERS & SETTERS
 	sf::Vector2f const & getPosition() const;
+	sf::Vector2f const & getVelocity() const;
 	sf::Vector2f const getDirection() const;
 
 	float const getRotation() const;
