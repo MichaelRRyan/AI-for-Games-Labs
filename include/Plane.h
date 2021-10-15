@@ -25,6 +25,8 @@ public:
 	void rotateRight(float t_delta);
 
 	// GETTERS & SETTERS
+	Plane* getTarget() const;
+
 	sf::Vector2f const & getPosition() const;
 	sf::Vector2f const & getVelocity() const;
 	sf::Vector2f const getDirection() const;
@@ -33,19 +35,14 @@ public:
 	float const getAcceleration() const;
 	float const getSpeed() const;
 
-	void setTarget(Plane* t_target);
-	Plane * getTarget() const;
-
-	void setPlaneType(int t_type);
-
-	void setActive(bool t_active);
 	bool getActive() const;
 
-protected:
-
-	void setPosition(sf::Vector2f t_position);
+	void setTarget(Plane* t_target);
+	void setPosition(sf::Vector2f const& t_position);
 	void setRotation(float t_rotation);
 	void setMaxSpeed(float t_maxSpeed);
+	void setActive(bool t_active);
+	void setPlaneType(int t_type);
 
 private:
 
@@ -62,7 +59,9 @@ private:
 	sf::Sprite m_sprite;
 
 	sf::Vector2f m_velocity;
+	float m_angularVelocity;
 
+	float m_angularFriction;
 	float m_acceleration;
 	float m_rotationSpeed;
 	float m_maxSpeed;
