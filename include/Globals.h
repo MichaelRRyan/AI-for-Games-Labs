@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-const float g_WINDOW_WIDTH{ 800.0f };
-const float g_WINDOW_HEIGHT{ 600.0f };
+const float g_WINDOW_WIDTH{ 1600.0f };
+const float g_WINDOW_HEIGHT{ 900.0f };
 
 const float g_SCALE{ 2.5f };
 

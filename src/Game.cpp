@@ -8,35 +8,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{ static_cast<unsigned>(g_WINDOW_WIDTH), 
 							 static_cast<unsigned>(g_WINDOW_HEIGHT), 32u }, "AI Planes" }
 {
-	m_planes.push_back(new Plane(new UserInputBehaviour()));
-	m_planes.push_back(new Plane(new WanderBehaviour(), 25.0f, 0.75f, 125.0f, 45.0f));
-	m_planes.push_back(new Plane(new ArriveBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
-	m_planes.push_back(new Plane(new ArriveBehaviour(), 15.0f, 0.5f, 80.0f, 45.0f));
-	m_planes.push_back(new Plane(new SeekBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
-	m_planes.push_back(new Plane(new PursueBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
-	m_planes.push_back(new Plane(new FleeBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
-
-	m_planes.at(0)->setPlaneType(1);
-	m_planes.at(1)->setPlaneType(2);
-	m_planes.at(2)->setPlaneType(3);
-	m_planes.at(3)->setPlaneType(3);
-	m_planes.at(4)->setPlaneType(4);
-	m_planes.at(5)->setPlaneType(5);
-	m_planes.at(6)->setPlaneType(6);
-
-	m_planes.at(1)->setTarget(m_planes.at(0));
-	m_planes.at(2)->setTarget(m_planes.at(0));
-	m_planes.at(3)->setTarget(m_planes.at(0));
-	m_planes.at(4)->setTarget(m_planes.at(0));
-	m_planes.at(5)->setTarget(m_planes.at(0));
-	m_planes.at(6)->setTarget(m_planes.at(0));
-
-	m_trackerLabels.emplace_back("1. Wander", m_planes.at(1));
-	m_trackerLabels.emplace_back("2. Fast Arrive", m_planes.at(2));
-	m_trackerLabels.emplace_back("3. Slow Arrive", m_planes.at(3));
-	m_trackerLabels.emplace_back("4. Seek", m_planes.at(4));
-	m_trackerLabels.emplace_back("5. Pursue", m_planes.at(5));
-	m_trackerLabels.emplace_back("6. Flee", m_planes.at(6));
+	setupPlanes();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,6 +89,40 @@ void Game::render()
 		m_window.draw(label);
 
 	m_window.display();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void Game::setupPlanes()
+{
+	m_planes.push_back(new Plane(new UserInputBehaviour()));
+	m_planes.push_back(new Plane(new WanderBehaviour(), 25.0f, 0.75f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new ArriveBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new ArriveBehaviour(), 15.0f, 0.5f, 80.0f, 45.0f));
+	m_planes.push_back(new Plane(new SeekBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new PursueBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
+	m_planes.push_back(new Plane(new FleeBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
+
+	m_planes.at(0)->setPlaneType(1);
+	m_planes.at(1)->setPlaneType(2);
+	m_planes.at(2)->setPlaneType(3);
+	m_planes.at(3)->setPlaneType(3);
+	m_planes.at(4)->setPlaneType(4);
+	m_planes.at(5)->setPlaneType(5);
+	m_planes.at(6)->setPlaneType(6);
+
+	m_planes.at(1)->setTarget(m_planes.at(0));
+	m_planes.at(2)->setTarget(m_planes.at(0));
+	m_planes.at(3)->setTarget(m_planes.at(0));
+	m_planes.at(4)->setTarget(m_planes.at(0));
+	m_planes.at(5)->setTarget(m_planes.at(0));
+	m_planes.at(6)->setTarget(m_planes.at(0));
+
+	m_trackerLabels.emplace_back("1. Wander", m_planes.at(1));
+	m_trackerLabels.emplace_back("2. Fast Arrive", m_planes.at(2));
+	m_trackerLabels.emplace_back("3. Slow Arrive", m_planes.at(3));
+	m_trackerLabels.emplace_back("4. Seek", m_planes.at(4));
+	m_trackerLabels.emplace_back("5. Pursue", m_planes.at(5));
+	m_trackerLabels.emplace_back("6. Flee", m_planes.at(6));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -28,6 +28,8 @@ private:
 	void update(float t_delta);
 	void render();
 
+	void setupPlanes();
+
 	bool m_isRunning;
 
 	sf::RenderWindow m_window;

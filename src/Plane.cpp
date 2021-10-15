@@ -12,7 +12,7 @@ Plane::Plane(Behaviour* t_behaviour,
 	m_behaviour{ t_behaviour },
 	m_active{ true },
 	m_angularVelocity{ 0.0f },
-	m_angularFriction{ 0.7f }
+	m_angularFriction{ 0.8f }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
