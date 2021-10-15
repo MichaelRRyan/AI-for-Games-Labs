@@ -48,6 +48,7 @@ private:
 
 	virtual void draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const;
 
+	void updateRotation(float t_delta);
 	void updatePosition(float t_delta);
 	void handleScreenBoundaries();
 

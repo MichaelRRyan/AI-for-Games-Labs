@@ -10,7 +10,9 @@ Plane::Plane(Behaviour* t_behaviour,
 	m_maxSpeed{ 500.0f },
 	m_target{ nullptr },
 	m_behaviour{ t_behaviour },
-	m_active{ true }
+	m_active{ true },
+	m_angularVelocity{ 0.0f },
+	m_angularFriction{ 0.7f }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
@@ -38,10 +40,18 @@ void Plane::update(float t_delta)
 	{
 		if (m_behaviour) m_behaviour->update(this, t_delta);
 
+		updateRotation(t_delta);
 		updatePosition(t_delta);
 
 		m_visionCone.update(*this);
 	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void Plane::updateRotation(float t_delta)
+{
+	setRotation(m_sprite.getRotation() + m_angularVelocity * t_delta);
+	m_angularVelocity -= m_angularVelocity * m_angularFriction * t_delta;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,13 +102,13 @@ void Plane::decelerate(float t_delta)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateLeft(float t_delta)
 {
-	setRotation(m_sprite.getRotation() - getSpeed() * m_rotationSpeed * t_delta);
+	m_angularVelocity -= getSpeed() * m_rotationSpeed * t_delta;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Plane::rotateRight(float t_delta)
 {
-	setRotation(m_sprite.getRotation() + getSpeed() * m_rotationSpeed * t_delta);
+	m_angularVelocity += getSpeed() * m_rotationSpeed * t_delta;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
