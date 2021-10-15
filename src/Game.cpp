@@ -1,5 +1,7 @@
 #include "Game.h"
 
+bool Debug::g_debugMode{ true };
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 Game::Game() :
 	m_isRunning{ false },
@@ -80,10 +82,14 @@ void Game::processEvents()
 			// Checks the number keys from 1 to 6.
 			if (newEvent.key.code >= 27 && newEvent.key.code <= 32)
 			{
+				// Toggle on/off the corresponding plane.
 				int index = newEvent.key.code - 26;
 				Plane* plane = m_planes.at(index);
 				plane->setActive(!plane->getActive());
 			}
+			// Toggles visible vision cones and labels.
+			else if (sf::Keyboard::D == newEvent.key.code)
+				Debug::g_debugMode = !Debug::g_debugMode;
 		}
 	}
 }

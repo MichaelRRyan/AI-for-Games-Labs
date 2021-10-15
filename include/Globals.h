@@ -7,6 +7,13 @@ const float g_WINDOW_HEIGHT{ 600.0f };
 
 const float g_SCALE{ 2.5f };
 
+// Has to be wrapped in a class to avoid "multiply defined symbols" error.
+class Debug
+{
+public:
+	static bool g_debugMode; // Toggles visible vision cones and labels.
+};
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 static sf::Vector2f vectorRotateBy(sf::Vector2f const& t_vector, float t_angleRadians);
 static sf::Vector2f normalise(sf::Vector2f const& t_vector);

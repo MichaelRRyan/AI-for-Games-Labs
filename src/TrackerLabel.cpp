@@ -49,7 +49,7 @@ void TrackerLabel::setMatchVisibility(bool t_matchVisibility)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void TrackerLabel::draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const
 {
-	if (m_visible)
+	if (Debug::g_debugMode && m_visible)
 		t_target.draw(m_text, t_states);
 }
 

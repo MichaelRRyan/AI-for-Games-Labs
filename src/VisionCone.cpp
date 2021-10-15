@@ -99,7 +99,8 @@ bool VisionCone::checkForTarget(Plane const& t_target)
 ///////////////////////////////////////////////////////////////////////////////
 void VisionCone::draw(sf::RenderTarget& t_target, sf::RenderStates t_states) const
 {
-	t_target.draw(m_vision, t_states);
+	if (Debug::g_debugMode)
+		t_target.draw(m_vision, t_states);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
