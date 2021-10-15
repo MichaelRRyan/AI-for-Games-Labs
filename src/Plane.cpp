@@ -12,7 +12,8 @@ Plane::Plane(Behaviour* t_behaviour,
 	m_behaviour{ t_behaviour },
 	m_active{ true },
 	m_angularVelocity{ 0.0f },
-	m_angularFriction{ 0.8f }
+	m_angularFriction{ 0.8f },
+	m_radius{ 16 * g_SCALE }
 {
 	if (m_texture.loadFromFile("assets/images/planes.png"))
 		m_sprite.setTexture(m_texture);
@@ -67,13 +68,12 @@ void Plane::updatePosition(float t_delta)
 void Plane::handleScreenBoundaries()
 {
 	// Take reference to the rect and position.
-	sf::FloatRect rect = m_sprite.getGlobalBounds();
 	sf::Vector2f pos = m_sprite.getPosition();
 
-	if (pos.y < -rect.height) pos.y = g_WINDOW_HEIGHT; // Top.
-	if (pos.y > g_WINDOW_HEIGHT) pos.y = -rect.height; // Bottom.
-	if (pos.x < -rect.width) pos.x = g_WINDOW_WIDTH; // Left.
-	if (pos.x > g_WINDOW_WIDTH) pos.x = -rect.width; // Right.
+	if (pos.y < -m_radius) pos.y = g_WINDOW_HEIGHT + m_radius; // Top.
+	if (pos.y > g_WINDOW_HEIGHT + m_radius) pos.y = -m_radius; // Bottom.
+	if (pos.x < -m_radius) pos.x = g_WINDOW_WIDTH + m_radius; // Left.
+	if (pos.x > g_WINDOW_WIDTH + m_radius) pos.x = -m_radius; // Right.
 
 	m_sprite.setPosition(pos.x, pos.y);
 }
@@ -159,6 +159,12 @@ float const Plane::getAcceleration() const
 float const Plane::getSpeed() const
 {
 	return magnitude(m_velocity);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+float const Plane::getRadius() const
+{
+	return m_radius;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

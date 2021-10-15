@@ -61,13 +61,11 @@ void VisionCone::generateCone(sf::Vector2f const& t_position, float t_rotationRa
 ///////////////////////////////////////////////////////////////////////////////
 bool VisionCone::checkForTarget(Plane const& t_target)
 {
-	float tempPlaneRadius = 32.0f;
-
 	// Gets the vector between the entity and the vision cone position.
 	sf::Vector2f distance = t_target.getPosition() - m_position;
 
 	// Checks that the target is within range of the vision cone.
-	if (magnitude(distance) < m_radius + tempPlaneRadius)
+	if (magnitude(distance) < m_radius + t_target.getRadius())
 	{
 		sf::Vector2f directionVec{ cos(m_rotation), sin(m_rotation) };
 
@@ -75,8 +73,8 @@ bool VisionCone::checkForTarget(Plane const& t_target)
 		sf::Vector2f axis = normalise({ -distance.y, distance.x });
 
 		// Finds the min and max points of the target along the axis.
-		sf::Vector2f p1 = t_target.getPosition() + axis * tempPlaneRadius;
-		sf::Vector2f p2 = t_target.getPosition() - axis * tempPlaneRadius;
+		sf::Vector2f p1 = t_target.getPosition() + axis * t_target.getRadius();
+		sf::Vector2f p2 = t_target.getPosition() - axis * t_target.getRadius();
 
 		// Finds the angle from the centre line to each of the edge points.
 		float angleToP1 = signedAngleBetween(directionVec, p1 - m_position);

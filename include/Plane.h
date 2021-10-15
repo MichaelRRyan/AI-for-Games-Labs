@@ -34,6 +34,7 @@ public:
 	float const getRotation() const;
 	float const getAcceleration() const;
 	float const getSpeed() const;
+	float const getRadius() const;
 
 	bool getActive() const;
 
@@ -66,6 +67,8 @@ private:
 	float m_acceleration;
 	float m_rotationSpeed;
 	float m_maxSpeed;
+
+	float m_radius; // The radius of the plane for circle collisions;
 
 	bool m_active;
 

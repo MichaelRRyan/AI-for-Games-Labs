@@ -94,12 +94,12 @@ void Game::render()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void Game::setupPlanes()
 {
-	m_planes.push_back(new Plane(new UserInputBehaviour()));
-	m_planes.push_back(new Plane(new WanderBehaviour(), 25.0f, 0.75f, 125.0f, 45.0f));
-	m_planes.push_back(new Plane(new ArriveBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new UserInputBehaviour(), 25.0f, 0.5f));
+	m_planes.push_back(new Plane(new WanderBehaviour(), 25.0f, 3.0f, 125.0f, 45.0f));
+	m_planes.push_back(new Plane(new ArriveBehaviour(), 50.0f, 1.0f, 200.0f, 45.0f));
 	m_planes.push_back(new Plane(new ArriveBehaviour(), 15.0f, 0.5f, 80.0f, 45.0f));
 	m_planes.push_back(new Plane(new SeekBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
-	m_planes.push_back(new Plane(new PursueBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
+	m_planes.push_back(new Plane(new PursueBehaviour(), 25.0f, 0.5f, 125.0f, 45.0f));
 	m_planes.push_back(new Plane(new FleeBehaviour(), 25.0f, 0.5f, 50.0f, 45.0f));
 
 	m_planes.at(0)->setPlaneType(1);
